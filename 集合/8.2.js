@@ -19,7 +19,7 @@ function Set(){
 }
 function find(item){
     var currNode = this.head;
-	while(currNode.element != item && current.next != null){
+	while(currNode.element != item){
 		currNode = currNode.next;
 	}
 	return currNode;
@@ -37,17 +37,17 @@ function isExist(item){
 	while(current.element != item && current.next != null){
 		current = current.next;
 	}
-	if(current.element === 'head' || current.element === null){
+	if(current.element != item){
 		return false
 	}
 	return true;
 }
 function add(newElement, item){
 	if(!this.isExist(newElement)){
-		// var newNode = new Node(newElement);
-		// var currNode = this.find(item);
-		// newNode.next = currNode.next;
-		// currNode.next = newNode;
+		var newNode = new Node(newElement);
+		var currNode = this.find(item);
+		newNode.next = currNode.next;
+		currNode.next = newNode;
 	}
 }
 function remove(data){
@@ -120,87 +120,18 @@ function show(){
 	}
 }
 
-// var names = new Set(); 
-// names.add("David"); 
-// names.add("Jennifer"); 
-// names.add("Cynthia"); 
-// names.add("Mike"); 
-// names.add("Raymond"); 
-// if (names.add("Mike")) { 
-// 	print("Mike added") 
-// }else { 
-// 	print("Can't add Mike, must already be in set"); 
-// }
-// print(names.show()); 
-// var removed = "Mike"; 
-// if (names.remove(removed)) { 
-// 	print(removed + " removed."); 
-// }else { 
-// 	print(removed + " not removed."); 
-// }
-// names.add("Clayton"); 
-// print(names.show()); 
-// removed = "Alisa"; 
-// if (names.remove("Mike")) { 
-// 	print(removed + " removed."); 
-// }else { 
-// 	print(removed + " not removed."); 
-// }
-
-// var cis = new Set(); 
-// cis.add("Mike"); 
-// cis.add("Clayton");
-// cis.add("Jennifer"); 
-// cis.add("Raymond"); 
-// var dmp = new Set(); 
-// dmp.add("Raymond"); 
-// dmp.add("Cynthia"); 
-// dmp.add("Jonathan"); 
-// var it = new Set(); 
-// it = cis.union(dmp); 
-// print(it.show());
-
-// var cis = new Set(); 
-// cis.add("Mike"); 
-// cis.add("Clayton"); 
-// cis.add("Jennifer"); 
-// cis.add("Raymond"); 
-// var dmp = new Set(); 
-// dmp.add("Raymond"); 
-// dmp.add("Cynthia"); 
-// dmp.add("Bryan"); 
-// var inter = cis.intersect(dmp); 
-// print(inter.show());
-
-// var it = new Set();
-// it.add("Cynthia"); 
-// it.add("Clayton"); 
-// it.add("Jennifer"); 
-// it.add("Danny"); 
-// it.add("Jonathan"); 
-// it.add("Terrill"); 
-// it.add("Raymond"); 
-// it.add("Mike"); 
-// var dmp = new Set(); 
-// dmp.add("Cynthia"); 
-// dmp.add("Raymond"); 
-// dmp.add("Jonathan"); 
-// if (dmp.subset(it)) { 
-// 	print("DMP is a subset of IT."); 
-// }else { 
-// 	print("DMP is not a subset of IT."); 
-// }
-
 var cis = new Set();
-var it = new Set(); 
-cis.add("Clayton"); 
-cis.add("Jennifer"); 
-cis.add("Danny"); 
-it.add("Bryan"); 
-it.add("Clayton"); 
-it.add("Jennifer"); 
-var diff = new Set(); 
-diff = cis.difference(it); 
-//print("[" + cis.show() + "] difference [" + it.show() + "] -> [" + diff.show() + "]");
+var it = new Set();
+cis.add("Clayton",'head'); 
+cis.add("Jennifer",'Clayton'); 
+cis.add("Danny",'Jennifer'); 
+it.add("Bryan",'head'); 
+it.add("Clayton",'Bryan'); 
+it.add("Jennifer",'Clayton');
+
+print('cis');
 cis.show();
+
+print();
+print('it');
 it.show();

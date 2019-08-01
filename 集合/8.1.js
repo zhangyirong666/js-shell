@@ -9,6 +9,8 @@ function Set(){
 	this.show = show;
 	this.contains = contains;//是否包含
 	this.size = size;
+	this.higher = higher;//返回比传入元素大的元素中最小的那个
+	this.lower = lower;//返回比传入元素小的元素中最大的那个
 }
 function add(data){
 	if(this.dataStore.indexOf(data)<0){
@@ -90,6 +92,16 @@ function difference(set){
 }
 function show(){
 	return this.dataStore;
+}
+function higher(data){
+	this.add(data);
+	var pos = this.dataStore.indexOf(data)+1;
+	return this.dataStore[pos];
+}
+function lower(data){
+	this.add(data);
+	var pos = this.dataStore.indexOf(data)-1;
+	return this.dataStore[pos];
 }
 
 // var names = new Set(); 
@@ -173,4 +185,7 @@ it.add("Clayton");
 it.add("Jennifer"); 
 var diff = new Set(); 
 diff = cis.difference(it); 
-print("[" + cis.show() + "] difference [" + it.show() + "] -> [" + diff.show() + "]");
+//print("[" + cis.show() + "] difference [" + it.show() + "] -> [" + diff.show() + "]");
+print(cis.show());
+//print(cis.higher('Cmrewt'));
+print(cis.lower('Fee'));
